@@ -48,8 +48,6 @@ Once the program is running, you can choose a mode to use:
 ## Flowchart
 Below is a flowchart that illustrates the process of searching and downloading papers:
 
-
-## Flowchart
 <p align="center">
   <img src="images/flowchart.png" alt="Flowchart" />
 </p>

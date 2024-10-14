@@ -8,8 +8,9 @@ def download_arxiv_paper(arxiv_id, subfolder):
     try:
         client = arxiv.Client()
         result = arxiv.Search(id_list=[arxiv_id])
-        paper_path = f"{arxiv_id}.{paper.title}.pdf"
+        
         paper = next(client.results(result))
+        paper_path = f"{arxiv_id}.{paper.title}.pdf"
         paper.download_pdf(dirpath=subfolder)
 
         return True, paper_path
@@ -55,11 +56,11 @@ def process_new_papers(pdf_file_path, processed_papers=set(), output_folder: str
         # print(f"Tổng số bài báo tải thành công: {total_papers}")
         # print(f"Tỉ lệ tải thành công: {success_rate:.2f}%")
 
-        # # Mới: Trích xuất các hyperlink từ các bài báo đã tải xuống
-        for id in results['arxiv']:
-            paper_path = os.path.join(output_folder, file_name)
-            print(f"Processing downloaded paper: {file_name}")
-            process_new_papers(paper_path, processed_papers)  # Gọi lại hàm để trích xuất từ các bài báo đã tải xuống
+        # # # Mới: Trích xuất các hyperlink từ các bài báo đã tải xuống
+        # for id in results['arxiv']:
+        #     paper_path = os.path.join(output_folder, file_name)
+        #     print(f"Processing downloaded paper: {file_name}")
+        #     process_new_papers(paper_path, processed_papers)  # Gọi lại hàm để trích xuất từ các bài báo đã tải xuống
 
 def prompt_crawl_arxiv(keyword, max_results=10):
     search = arxiv.Search(
